@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人主页</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; max-width: 400px; width: 90%; }
+        h1 { color: #24292e; margin-bottom: 10px; }
+        p { color: #586069; line-height: 1.6; }
+        .btn { display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #2ea44f; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; transition: background 0.3s; }
+        .btn:hover { background-color: #2c974b; }
+        #password-input { margin-top: 20px; padding: 8px; border: 1px solid #d1d5da; border-radius: 6px; width: 70%; }
+        #content { display: none; } /* 默认隐藏内容 */
+    </style>
+</head>
+<body>
+
+    <!-- 登录区域 -->
+    <div id="login-area" class="container">
+        <h1>🔒 这是一个私密主页</h1>
+        <p>请输入访问密码查看内容。</p>
+        <input type="password" id="password-input" placeholder="输入密码 (默认是 123)">
+        <br>
+        <a href="javascript:void(0)" class="btn" onclick="checkPassword()">进入主页</a>
+    </div>
+
+    <!-- 实际内容区域 -->
+    <div id="content" class="container">
+        <h1>👋 欢迎来到 zz-git-coder 的主页！</h1>
+        <p>这是我的第一个 GitHub Pages 网站。</p>
+        <p>目前这里还很简单，但我会慢慢丰富它的内容。</p>
+        <a href="https://github.com/zz-git-coder" class="btn" target="_blank">查看我的 GitHub</a>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var input = document.getElementById('password-input').value;
+            // 这里的 '123' 就是密码，你可以改成你想要的任何字符
+            if(input === '123') {
+                document.getElementById('login-area').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            } else {
+                alert('密码错误！请重试。');
+            }
+        }
+    </script>
+
+</body>
+</html>
