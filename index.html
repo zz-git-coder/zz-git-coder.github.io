@@ -21,7 +21,7 @@
     <div id="login-area" class="container">
         <h1>🔒 这是一个私密主页</h1>
         <p>请输入访问密码查看内容。</p>
-        <input type="password" id="password-input" placeholder="输入密码 (默认是 123)">
+        <input type="password" id="password-input" placeholder="输入密码">
         <br>
         <a href="javascript:void(0)" class="btn" onclick="checkPassword()">进入主页</a>
     </div>
@@ -37,8 +37,8 @@
     <script>
         function checkPassword() {
             var input = document.getElementById('password-input').value;
-            // 这里的 '123' 就是密码，你可以改成你想要的任何字符
-            if(input === '123') {
+            // 这里的 'git574606087' 就是密码，你可以改成你想要的任何字符
+            if(input === 'git574606087') {
                 document.getElementById('login-area').style.display = 'none';
                 document.getElementById('content').style.display = 'block';
             } else {
