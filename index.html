@@ -2,50 +2,162 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的个人主页</title>
+    <title>张震的个人主页</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #000000; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center; max-width: 400px; width: 90%; }
-        h1 { color: #24292e; margin-bottom: 10px; }
-        p { color: #586069; line-height: 1.6; }
-        .btn { display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #2ea44f; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; transition: background 0.3s; }
-        .btn:hover { background-color: #2c974b; }
-        #password-input { margin-top: 20px; padding: 8px; border: 1px solid #d1d5da; border-radius: 6px; width: 70%; }
-        #content { display: none; } /* 默认隐藏内容 */
+        /* 全局设置 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft YaHei", sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* 1. 顶部导航栏 */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.6); /* 半透明黑色 */
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed; /* 固定在顶部 */
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 20px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: #ddd;
+            border-bottom: 2px solid white;
+        }
+
+        /* 2. 顶部大图区域 (Hero Section) */
+        .hero {
+            /* 这里用了一张网络图片作为背景，你可以换成你自己的 */
+            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            height: 400px; /* 高度 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            margin-top: 60px; /* 给导航栏留位置 */
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+            font-family: "KaiTi", serif; /* 楷体更有情怀 */
+        }
+
+        .hero p {
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        /* 3. 主要内容区域 (左右分栏) */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            display: flex; /* 开启Flex布局实现左右分栏 */
+            gap: 40px; /* 左右间距 */
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* 左侧：头像/图片区 */
+        .left-col {
+            flex: 1; /* 占比 1 */
+            text-align: center;
+        }
+
+        .left-col img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* 右侧：文字内容区 */
+        .right-col {
+            flex: 2; /* 占比 2，比左边宽 */
+            line-height: 1.8;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .right-col h2 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        /* 底部 */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #aaa;
+            margin-top: 40px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- 登录区域 -->
-    <div id="login-area" class="container">
-        <h1>🔒 这是一个私密主页</h1>
-        <p>请输入访问密码查看内容。</p>
-        <input type="password" id="password-input" placeholder="输入密码">
-        <br>
-        <a href="javascript:void(0)" class="btn" onclick="checkPassword()">进入主页</a>
+    <!-- 顶部导航 -->
+    <div class="navbar">
+        <a href="#">首页</a>
+        <a href="#">博文</a>
+        <a href="#">沉淀</a>
+        <a href="#">精进</a>
+        <a href="#">自省</a>
     </div>
 
-    <!-- 实际内容区域 -->
-    <div id="content" class="container">
-        <h1>👋 欢迎来到 张震 的主页！</h1>
-        <p>这是我的第一个 GitHub Pages 网站。</p>
-        <p>目前这里还很简单，但我会慢慢丰富它的内容。</p>
-        <a href="https://github.com/zz-git-coder" class="btn" target="_blank">查看我的 GitHub</a>
+    <!-- 顶部大图与签名 -->
+    <div class="hero">
+        <h1>满身的硬刺只为柔弱而敏感的内心</h1>
+        <p>—— Sonic ZF</p>
     </div>
 
-    <script>
-        function checkPassword() {
-            var input = document.getElementById('password-input').value;
-            // 这里的 'git574606087' 就是密码，你可以改成你想要的任何字符
-            if(input === 'git574606087') {
-                document.getElementById('login-area').style.display = 'none';
-                document.getElementById('content').style.display = 'block';
-            } else {
-                alert('密码错误！请重试。');
-            }
-        }
-    </script>
+    <!-- 中间内容区 -->
+    <div class="container">
+        <!-- 左边放照片 -->
+        <div class="left-col">
+            <!-- 这里放了一张演讲的照片作为示例 -->
+            <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=2070&auto=format&fit=crop" alt="我的照片">
+            <p style="margin-top:10px; color:#888;">我在桥梁软件圈打拼了十三年</p>
+        </div>
+
+        <!-- 右边放文字 -->
+        <div class="right-col">
+            <h2>关于我</h2>
+            <p>我已经在桥梁软件圈打拼了十三年，有人的地方就有江湖。在这个名为桥梁的江湖中，有时候我觉得自己是一位横刀立马的大侠，但更多的时候我觉得自己是一匹流浪在荒原上的孤狼。</p>
+            
+            <p>十三年如流水，蹉跎之后，江湖上多了很多玩伴。我们间因技术结缘，因土木人特有的质朴结交。有的人会跟我炫耀吊了一条大鱼，有的人会把我当成大哥问我职业规划。</p>
+            
+            <p>出差的夜从此再也不会无趣，约上三五好友，小酌清谈均可。</p>
+            
+            <hr style="border: 0; border-top: 1px dashed #ccc; margin: 20px 0;">
+            
+            <h3>迈上讲堂桥梁说</h3>
+            <p>那些用Midas程序做毕业论文的小伙伴已经在各领域独当一面。相信除了披星戴月的辛勤之外一定有很多宝贵经验和感受想和大家分享。</p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 zz-git-coder. All rights reserved.
+    </footer>
 
 </body>
 </html>
